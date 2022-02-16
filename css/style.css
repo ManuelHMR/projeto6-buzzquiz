@@ -1,18 +1,19 @@
-
-
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Roboto', sans-serif;
     background-color: #E5E5E5;
     display: flex;
     justify-content: center;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-header{
+
+header {
     width: 100%;
     height: 69px;
     background-color: #EC362D;
@@ -24,26 +25,30 @@ header{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     z-index: 3;
 }
-header h1{
+
+header h1 {
     color: #ffffff;
     font-weight: 700;
     font-size: 37px;
 }
-main{
+
+main {
     width: 375px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 69px 14px 0px 14px;
 }
-h4{
+
+h4 {
     font-size: 20px;
     font-weight: bold;
     line-height: 23px;
     margin-top: 35px;
     width: 98%;
 }
-.creation-box{
+
+.creation-box {
     border: 1px dashed #D5D5D5;
     display: flex;
     flex-direction: column;
@@ -52,13 +57,16 @@ h4{
     align-items: center;
     margin-top: 31px;
 }
-.creation-box h2{
+
+.creation-box h2 {
     font-size: 20px;
     color: #B9B9B9;
     padding: 0px 45px 0px 45px;
 }
-.creation-box h3{
+
+.creation-box button {
     font-size: 21px;
+    background-color: #FAFAFA;
     color: #EC362D;
     border: 1px dashed #ec362d;
     border-radius: 50px;
@@ -69,24 +77,29 @@ h4{
     align-items: center;
     margin-top: 34px;
 }
-.quizz-box{
-    width: 340px;
+
+.creation-box button:hover {}
+
+.quizz-box {
+    width: 375px;
     height: 181px;
     border-radius: 5px;
     position: relative;
     margin-top: 14px;
+    z-index: 2;
 }
-.quizz-box img{
+
+.quizz-box img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     position: absolute;
     z-index: 1;
-
 }
-.quizz-box h5{
+
+.quizz-box h5 {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     color: #ffffff;
     font-size: 19px;
     bottom: 7px;
