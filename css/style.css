@@ -9,6 +9,9 @@ body{
     display: flex;
     justify-content: center;
 }
+.hidden{
+    display: none;
+}
 header{
     width: 100%;
     height: 69px;
@@ -79,6 +82,7 @@ h4{
     border-radius: 5px;
     position: absolute;
     z-index: 1;
+
 }
 .quizz-box h5{
     position: absolute;
