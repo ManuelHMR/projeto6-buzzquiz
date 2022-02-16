@@ -1,0 +1,18 @@
+@media screen and (min-width: 1100px){
+  main{
+    width: 1100px;
+  }
+  .creation-box{
+    width: 1100px;
+  }
+  .quizz-display{
+    width: 1100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .quizz-box{
+    margin-right: 15px;
+  }
+}
