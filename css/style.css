@@ -7,6 +7,8 @@ body {
     background-color: #E5E5E5;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .hidden {
@@ -44,7 +46,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 69px 14px 0px 14px;
+    margin-top: 69px;
 }
 
 .allQuizzes {
@@ -88,7 +90,7 @@ main {
 .creation-box button:hover {}
 
 .quizz-box {
-    width: 375px;
+    width: 340px;
     height: 181px;
     border-radius: 5px;
     position: relative;
