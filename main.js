@@ -19,7 +19,7 @@ function displayQuizz(quizzRepesponse) {
         quizzDisplay.innerHTML =
             quizzDisplay.innerHTML +
             `
-      <div class="quizz-box" onclick="displaySelectedQuizz(this)">
+      <div class="quizz-box" onclick="loadSelectedQuizz(this)">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
         <p class="id hidden">${i}</p>
@@ -33,15 +33,16 @@ function displayQuizz(quizzRepesponse) {
 }
 
 function displaySelectedQuizz(e) {
-    hideHomePage();
-    document.querySelector('header').classList.remove('hidden');
-    document.querySelector('.selected-quizz-page').classList.remove('hidden');
+    hideHomePage()
     id = e.querySelector("p").innerHTML
-    console.log(savedApiData[id]);
-    selectedQuizzPage.innerHTML = `<img src="${savedApiData[id].image}"/>`
+    let main = document.querySelector("main")
+    main.innerHTML = `<img src="${savedApiData[id].image}"/>`
     displayQuizzQuestions()
 }
-
+function loadSelectedQuizz(){
+    displayLoadPage()
+    setTimeout(displaySelectedQuizz, 1500)
+}
 function displayQuizzQuestions(){
     let questions = savedApiData[id].questions
     console.log(questions)
@@ -54,8 +55,13 @@ function displayQuizzQuestions(){
 }
 
 function hideHomePage() {
-    document.querySelector('header').classList.add('hidden')
-    document.querySelector('main').classList.add('hidden')
+    document.querySelector('main').innerHTML = ``
+}
+function displayLoadPage(){
+    document.querySelector('main').innerHTML = `
+    <div class="loader"></div>
+    <h2 class="loading">Carregando</h2>
+    `
 }
 
 
