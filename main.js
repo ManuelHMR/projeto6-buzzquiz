@@ -35,6 +35,7 @@ function displayQuizz(quizzRepesponse) {
 function displaySelectedQuizz(e) {
     hideHomePage();
     document.querySelector('header').classList.remove('hidden');
+    document.querySelector('.selected-quizz-page').classList.remove('hidden');
     id = e.querySelector("p").innerHTML
     console.log(savedApiData[id]);
     selectedQuizzPage.innerHTML = `<img src="${savedApiData[id].image}"/>`
@@ -46,6 +47,7 @@ function displayQuizzQuestions(){
     console.log(questions)
     for(let i = 0 ; i < questions.length; i++){
         selectedQuizzPage.innerHTML = selectedQuizzPage.innerHTML + `
+        <section class=""
         <p>${questions[i].title}</p>
         `
     }
