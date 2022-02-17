@@ -15,4 +15,7 @@
   .quizz-box{
     margin-right: 15px;
   }
+  .selected-quizz-page img{
+    height: 227px;
+}
 }

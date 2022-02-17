@@ -1,4 +1,8 @@
 const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
+let savedApiData
+let selectedQuizzPage = document.querySelector(".selected-quizz-page");
+let id
+
 getQuizz()
 
 function getQuizz() {
@@ -7,7 +11,8 @@ function getQuizz() {
 }
 
 function displayQuizz(quizzRepesponse) {
-    let data = quizzRepesponse.data
+    let data = quizzRepesponse.data;
+    savedApiData = data;
     console.log(data)
     for (let i = 0; i < quizzRepesponse.data.length; i++) {
         let quizzDisplay = document.querySelector('.quizz-display')
@@ -17,6 +22,7 @@ function displayQuizz(quizzRepesponse) {
       <div class="quizz-box" onclick="displaySelectedQuizz(this)">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
+        <p class="id hidden">${i}</p>
       </div>
     `
     }
@@ -24,13 +30,25 @@ function displayQuizz(quizzRepesponse) {
     //      let quizzImg = document.querySelector("quizz-box");
     //     quizzImg.setAttribute("background-image:", "linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 1)), url(`${data[j].image}`)");
     //  }
-
 }
 
+function displaySelectedQuizz(e) {
+    hideHomePage();
+    document.querySelector('header').classList.remove('hidden');
+    id = e.querySelector("p").innerHTML
+    console.log(savedApiData[id]);
+    selectedQuizzPage.innerHTML = `<img src="${savedApiData[id].image}"/>`
+    displayQuizzQuestions()
+}
 
-
-function displaySelectedQuizz() {
-    hideHomePage()
+function displayQuizzQuestions(){
+    let questions = savedApiData[id].questions
+    console.log(questions)
+    for(let i = 0 ; i < questions.length; i++){
+        selectedQuizzPage.innerHTML = selectedQuizzPage.innerHTML + `
+        <p>${questions[i].title}</p>
+        `
+    }
 }
 
 function hideHomePage() {

@@ -117,7 +117,15 @@ main {
     text-align: center;
 }
 
-
+.selected-quizz-page{
+    margin-top: 69px;
+    width: 100%;
+}
+.selected-quizz-page img{
+    object-fit: cover;
+    width: 100%;
+    height: 142px;
+}
 /*=========== estilos do criar quiz============*/
 
 .conteiner-quiz {
