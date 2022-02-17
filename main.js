@@ -14,7 +14,7 @@ function displayQuizz(quizzRepesponse) {
         quizzDisplay.innerHTML =
             quizzDisplay.innerHTML +
             `
-      <div class="quizz-box" onclick="displayScreen2(this)">
+      <div class="quizz-box" onclick="displaySelectedQuizz(this)">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
       </div>
@@ -29,13 +29,13 @@ function displayQuizz(quizzRepesponse) {
 
 
 
-function displayScreen2() {
-    hideScreen1()
+function displaySelectedQuizz() {
+    hideHomePage()
 }
 
-function hideScreen1() {
+function hideHomePage() {
     document.querySelector('header').classList.add('hidden')
-    document.querySelector('.home-page').classList.add('hidden')
+    document.querySelector('main').classList.add('hidden')
 }
 
 
