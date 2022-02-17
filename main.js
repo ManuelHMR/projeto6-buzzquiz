@@ -2,8 +2,26 @@ const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 let savedApiData
 let selectedQuizzPage = document.querySelector(".selected-quizz-page");
 let id
+displayLoadPage()
+setTimeout(loadHomePage, 1500)
 
-getQuizz()
+function loadHomePage(){
+    document.querySelector("main").innerHTML = `
+    <div class="home-page">
+            <div class="quizz-creation">
+                <div class="quizz-box creation-box">
+                    <h2>Você não criou nenhum quizz ainda :(</h2>
+                    <button onclick="displayCreateQuizz()">Criar Quizz</button>
+                </div>
+            </div>
+            <div class="allQuizzes">
+                <span>Todos os Quizzes</span>
+            </div>
+            <div class="quizz-display"></div>
+        </div>
+    `
+    getQuizz()
+}
 
 function getQuizz() {
     let quizzPromise = axios.get(urlQuizz)
@@ -63,7 +81,6 @@ function displayLoadPage(){
     <h2 class="loading">Carregando</h2>
     `
 }
-
 
 function displayCreateQuizz() {
     displayScreen3()
