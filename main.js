@@ -28,10 +28,6 @@ function displayQuizz(quizzRepesponse) {
 }
 
 
-function displayCreateQuizz() {
-    displayScreen3()
-    console.log("tela de criar quizz")
-}
 
 function displayScreen2() {
     hideScreen1()
@@ -39,9 +35,26 @@ function displayScreen2() {
 
 function hideScreen1() {
     document.querySelector('header').classList.add('hidden')
-    document.querySelector('main').classList.add('hidden')
+    document.querySelector('.home-page').classList.add('hidden')
+}
+
+
+function displayCreateQuizz() {
+    displayScreen3()
+    console.log("tela de criar quizz")
 }
 
 function displayScreen3() {
-    hideScreen1()
+    document.querySelector('.home-page').classList.add('hidden');
+    document.querySelector('.quizz-display').classList.add('hidden');
+    document.querySelector('.quizz-creation').classList.add('hidden');
+    document.querySelector('.creation-box').classList.add('hidden');
+    document.querySelector('.quizz-box').classList.add('hidden');
+    document.querySelector('.allQuizzes').classList.add('hidden');
+    console.log("tela inicial sumiu")
+    document.querySelector('.create-quiz-start').classList.remove('hidden');
+    document.querySelector('.create-quiz-head').classList.remove('hidden');
+    document.querySelector('.create-quiz-form1').classList.remove('hidden');
+    document.querySelector('.next-form-button').classList.remove('hidden');
+    console.log("carregou tela 3")
 }

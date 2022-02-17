@@ -5,12 +5,14 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #E5E5E5;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .hidden {
     display: none;
+    width: 1px;
+    height: 1px;
 }
 
 header {
@@ -23,7 +25,7 @@ header {
     justify-content: center;
     align-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    z-index: 3;
+    z-index: 4;
 }
 
 header h1 {
@@ -33,14 +35,19 @@ header h1 {
 }
 
 main {
-    width: 375px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.home-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     margin: 69px 14px 0px 14px;
 }
 
-h4 {
+.allQuizzes {
     font-size: 20px;
     font-weight: bold;
     line-height: 23px;
@@ -105,4 +112,92 @@ h4 {
     bottom: 7px;
     width: 100%;
     text-align: center;
+}
+
+
+/*=========== estilos do criar quiz============*/
+
+.conteiner-quiz {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.create-quiz-start {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-quiz-head {
+    display: flex;
+    width: 100%;
+    height: 89px;
+    left: 0;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-quiz-head span {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.create-quiz-form1 {
+    width: 100%;
+    height: 256px;
+    left: 0;
+    background-color: chocolate;
+}
+
+.create-quiz-form1 form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-quiz-form1 input {
+    height: 46px;
+    width: 95%;
+    margin-bottom: 9px;
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    background-color: #ffffff;
+    border: 1px solid #D1D1D1;
+    box-sizing: border-box;
+    border-radius: 5px
+}
+
+.create-quiz-form1 input:last-child {
+    margin-bottom: 21px;
+}
+
+.create-quiz-form1 input:first-child {
+    margin-top: 21px;
+}
+
+.next-form-button {
+    width: 80%;
+    height: 54px;
+    border-radius: 15px;
+    background-color: #EC362D;
+    margin-top: 29px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.next-form-button span {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
 }

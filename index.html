@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -19,16 +19,44 @@
         <h1>BuzzQuizz</h1>
     </header>
     <main>
-        <div class="quizz-creation">
-            <div class="quizz-box creation-box">
-                <h2>Você não criou nenhum quizz ainda :(</h2>
-                <button onclick="displayCreateQuizz()">Criar Quizz</button>
+        <div class="home-page">
+            <div class="quizz-creation">
+                <div class="quizz-box creation-box">
+                    <h2>Você não criou nenhum quizz ainda :(</h2>
+                    <button onclick="displayCreateQuizz()">Criar Quizz</button>
+                </div>
             </div>
+            <div class="allQuizzes">
+                <span>Todos os Quizzes</span>
+            </div>
+            <div class="quizz-display"></div>
         </div>
-        <h4>Todos os Quizzes</h4>
-        <div class="quizz-display">
+
+
+        <div class="create-quiz-start hidden">
+            <div class="create-quiz-head hidden">
+                <span> Comece pelo começo</span>
+            </div>
+            <div class="create-quiz-form1 hidden">
+                <form>
+                    <input type="text" name="titleQuizz" placeholder="Título do seu quizz">
+                    <input type="text" name="imgQuizz" placeholder="URL da imagem do seu quizz">
+                    <input type="text" name="amtQuestionQuizz" placeholder="Quantidade de perguntas do quizz">
+                    <input type="text" name="amtLevelsQuizz" placeholder="Quantidade de níveis do quizz">
+                </form>
+            </div>
+            <button class="next-form-button hidden">Prosseguir pra criar perguntas</button>
         </div>
+
+
     </main>
+    <!-- Esta section Carrega a tela 3 em diante-->
+
+
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
