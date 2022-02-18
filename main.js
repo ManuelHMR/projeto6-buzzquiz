@@ -102,13 +102,10 @@ function displayLoadPage(){
 }
 
 function displayCreateQuizz() {
-    document.querySelector('.home-page').classList.add('hidden');
-    document.querySelector('.quizz-display').classList.add('hidden');
-    document.querySelector('.quizz-creation').classList.add('hidden');
-    document.querySelector('.creation-box').classList.add('hidden');
-    document.querySelector('.quizz-box').classList.add('hidden');
-    document.querySelector('.allQuizzes').classList.add('hidden');
-
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+    <div class="create-quiz-start"></div>
+    `
     console.log("Indo para criar quizz")
     renderingCreationGeneral()
 }

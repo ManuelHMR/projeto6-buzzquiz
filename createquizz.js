@@ -42,19 +42,21 @@ function generalFormData(event) {
 }
 
 function displayCreateQuestion() {
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+        <div class="create-quiz-questions"></div>
+    `
     console.log("tela de criar questoes")
-    document.querySelector('.next-form-button').classList.add('hidden');
-    document.querySelector('.create-quiz-form1').classList.add('hidden');
-    document.querySelector('.create-quiz-head span').classList.add('hidden');
-    document.querySelector('.create-quiz-head').classList.add('hidden');
-    document.querySelector('.create-quiz-start').classList.add('hidden');
-    
+   
     renderingCreationQuestions()
 }
 
 function renderingCreationQuestions() {
     let screenCreationTwo = document.querySelector('.create-quiz-questions');
     screenCreationTwo.innerHTML = `
+            <div class="create-quiz-head">
+                <span>Crie suas perguntas</span>
+            </div>
             <div class="create-quiz-form2">
                 <form>               
                     <label for="fname">Pergunta 1</label>
@@ -88,12 +90,11 @@ function renderingCreationQuestions() {
 }
 
 function displayCreateLevels() {
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+        <div class="create-quiz-levels"></div>
+    `
     console.log("tela de criar leveis")
-    document.querySelector('.next-form-button2').classList.add('hidden');
-    document.querySelector('.create-quiz-form2').classList.add('hidden');
-    document.querySelector('.create-quiz-head span').classList.add('hidden');
-    document.querySelector('.create-quiz-head').classList.add('hidden');
-    document.querySelector('.create-quiz-start').classList.add('hidden');
     
     renderingCreationLevels()
 }
@@ -101,6 +102,9 @@ function displayCreateLevels() {
 function renderingCreationLevels() {
     let screenCreationTree = document.querySelector('.create-quiz-levels');
     screenCreationTree.innerHTML = `
+        <div class="create-quiz-head">
+            <span>Agora, decida os níveis!</span>
+        </div>
         <div class="create-quiz-form3">
             <form>
                 <label for="Nível 1">Nível 1</label>
@@ -116,11 +120,10 @@ function renderingCreationLevels() {
 //essa funçao prepara o ambiente para dar 
 function displayCreateFinish() {
     console.log("tela de sucesso")
-    document.querySelector('.next-form-button3').classList.add('hidden');
-    document.querySelector('.create-quiz-form3').classList.add('hidden');
-    document.querySelector('.create-quiz-head span').classList.add('hidden');
-    document.querySelector('.create-quiz-head').classList.add('hidden');
-    document.querySelector('.create-quiz-start').classList.add('hidden');
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+        <div class="create-quiz-sucess"></div>
+    `
 
     renderingCreationFinish()
 }
@@ -133,18 +136,23 @@ function renderingCreationFinish() {
     `
 }
 
-function displayQuizzCreated() {
-    console.log("Mudando para a tela do quizz criado")
-    document.querySelector('.next-form-button4').classList.add('hidden');
-    document.querySelector('.next-form-button5').classList.add('hidden');
-
-    renderingCreationGeneral()//mudar para a q renderiza a tela do quizz especifico
-}
-
 function displayHomePage() {
     console.log("Mudando para a tela inicial")
-    document.querySelector('.next-form-button4').classList.add('hidden');
-    document.querySelector('.next-form-button5').classList.add('hidden');
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+        <div class="create-quiz-levels"></div>
+    `
+    loadHomePage()
+}
 
-    renderingCreationGeneral()//mudar para a q renderiza a tela home page
+//essa function tem q ir para a pagina do quizz criado utilizando seu id arrumar
+function displayQuizzCreated() {
+    console.log("Mudando para a tela do quizz criado")
+    
+    document.querySelector('main').innerHTML = ``
+    document.querySelector('main').innerHTML = `
+        <div class="create-quiz-levels"></div>
+    `
+
+    renderingCreationGeneral()//mudar para a q renderiza a tela do quizz especifico
 }
