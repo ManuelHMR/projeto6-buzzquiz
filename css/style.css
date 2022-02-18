@@ -57,7 +57,7 @@ main {
     border: 7px solid lightcoral;
     border-left-color: #EC362D;
     border-radius: 100%;
-    animation: loader 2s linear infinite;
+    animation: loader 1s linear infinite;
 }
 @keyframes loader{
     to{
@@ -124,6 +124,7 @@ main {
     border-radius: 5px;
     position: absolute;
     z-index: 1;
+    border-radius: 5px;
 }
 
 .quizz-box h5 {
@@ -134,16 +135,63 @@ main {
     bottom: 7px;
     width: 100%;
     text-align: center;
+    justify-content: center;
 }
-
-.selected-quizz-page{
+.selected-quizz-header{
+    background-color:black;
+    z-index: 1;
     margin-top: 69px;
-    width: 100%;
-}
-.selected-quizz-page img{
-    object-fit: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 142px;
+}
+.selected-quizz-header h5{
+    position: absolute;
+    text-align: center;
+    font-size: 50px;
+    color: #ffffff;
+    z-index: 2;
+}
+.selected-quizz-img{
+    opacity: 40%;
+    object-fit: cover;
+    z-index: 0;
+    width: 100%;
+    height: 142px;
+}
+.question-box {
+    width: 340px;
+    margin-top: 24px;
+}
+.question-box h2{
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+    color: #ffffff;
+    background-color: #EC362D;
+    line-height: 89px;
+}
+.answer-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.answer{
+    margin: 12px 0px 0px 0px;
+    width: 163px;
+    height: auto;
+}
+.answer img{
+    width: 163px;
+    height: 113px;
+}
+.answer h3{
+    font-weight: 700;
+    font-size: 13px;
 }
 /*=========== estilos do criar quiz============*/
 

@@ -1,7 +1,8 @@
 const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 let savedApiData
-let selectedQuizzPage = document.querySelector(".selected-quizz-page");
 let id
+let main
+
 displayLoadPage()
 setTimeout(loadHomePage, 1500)
 
@@ -40,7 +41,7 @@ function displayQuizz(quizzRepesponse) {
       <div class="quizz-box" onclick="loadSelectedQuizz(this)">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
-        <p class="id hidden">${i}</p>
+        <p class="id hidden">${i}</p> 
       </div>
     `
     }
@@ -50,31 +51,49 @@ function displayQuizz(quizzRepesponse) {
     //  }
 }
 
-function displaySelectedQuizz(e) {
+function displaySelectedQuizz() {
     hideHomePage()
-    id = e.querySelector("p").innerHTML
-    let main = document.querySelector("main")
-    main.innerHTML = `<img src="${savedApiData[id].image}"/>`
+    document.querySelector("main").innerHTML = `<div class="selected-quizz-header"><img class="selected-quizz-img" src="${savedApiData[id].image}"/>
+    <h5>${savedApiData[id].title}</h5>
+    </div>`
     displayQuizzQuestions()
 }
-function loadSelectedQuizz(){
+
+function loadSelectedQuizz(e){
     displayLoadPage()
+    id = e.querySelector("p").innerHTML
     setTimeout(displaySelectedQuizz, 1500)
 }
+
 function displayQuizzQuestions(){
-    let questions = savedApiData[id].questions
-    console.log(questions)
+    let questions = savedApiData[id].questions;
+
+    main = document.querySelector("main");
     for(let i = 0 ; i < questions.length; i++){
-        selectedQuizzPage.innerHTML = selectedQuizzPage.innerHTML + `
-        <section class=""
-        <p>${questions[i].title}</p>
+        main.innerHTML = main.innerHTML + `
+        <div class="question-box">
+        <h2>${questions[i].title}</h2>
+        <div class="answer-box"></div>
+        </div>
         `
+        let answerArray = questions[i].answers.sort((a,b) => 0.5 - Math.random());
+        for(let j = 0; j< questions[i].answers.length; j++){
+            let questionBoxArray = document.querySelectorAll(".question-box");
+            let answerBox = questionBoxArray[i].querySelector(".answer-box")
+            answerBox.innerHTML = answerBox.innerHTML + `
+            <div class="answer">
+                <img src="${answerArray[j].image}"/>
+                <h3>${answerArray[j].text}</h3>
+            </answer-box>
+            `
+        }
     }
 }
 
 function hideHomePage() {
     document.querySelector('main').innerHTML = ``
 }
+
 function displayLoadPage(){
     document.querySelector('main').innerHTML = `
     <div class="loader"></div>
