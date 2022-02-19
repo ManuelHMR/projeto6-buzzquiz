@@ -67,12 +67,13 @@ function loadSelectedQuizz(e){
 
 function displayQuizzQuestions(){
     let questions = savedApiData[id].questions;
-
     main = document.querySelector("main");
     for(let i = 0 ; i < questions.length; i++){
         main.innerHTML = main.innerHTML + `
         <div class="question-box">
-        <h2>${questions[i].title}</h2>
+            <div style="background-color: ${questions[i].color};" class="question-box-header">
+                <h2>${questions[i].title}</h2>
+            </div>
         <div class="answer-box"></div>
         </div>
         `
@@ -81,11 +82,26 @@ function displayQuizzQuestions(){
             let questionBoxArray = document.querySelectorAll(".question-box");
             let answerBox = questionBoxArray[i].querySelector(".answer-box")
             answerBox.innerHTML = answerBox.innerHTML + `
-            <div class="answer">
+            <div class="answer" onclick="verifyAnswer(this)">
                 <img src="${answerArray[j].image}"/>
                 <h3>${answerArray[j].text}</h3>
-            </answer-box>
+                <p class="hidden">${answerArray[j].isCorrectAnswer}</p>
+            </answer>
             `
+        }
+    }
+}
+
+function verifyAnswer(e){
+    e.classList.add("selected")
+    let answersArr = e.parentNode.querySelectorAll(".answer")
+    for (let l = 0; l < answersArr.length; l++) {
+        answersArr[l].classList.add("opacity")
+        if(answersArr[l].querySelector("p").innerHTML === 'true'){
+            answersArr[l].querySelector("h3").classList.add("correct-style")
+        } 
+        if(answersArr[l].querySelector("p").innerHTML === 'false'){
+            answersArr[l].querySelector("h3").classList.add("incorrect-style")
         }
     }
 }

@@ -151,7 +151,7 @@ main {
 .selected-quizz-header h5{
     position: absolute;
     text-align: center;
-    font-size: 50px;
+    font-size: 19px;
     color: #ffffff;
     z-index: 2;
 }
@@ -166,19 +166,25 @@ main {
     width: 340px;
     margin-top: 24px;
 }
+.question-box-header{
+    width: 340px;
+    height: 89px;
+    background-color: #EC362D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .question-box h2{
     font-weight: 700;
     text-align: center;
-    width: 100%;
     font-size: 19px;
     color: #ffffff;
-    background-color: #EC362D;
-    line-height: 89px;
 }
 .answer-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .answer{
     margin: 12px 0px 0px 0px;
@@ -192,4 +198,16 @@ main {
 .answer h3{
     font-weight: 700;
     font-size: 13px;
+}
+.opacity{
+    opacity: 0.3;
+}
+.selected{
+    opacity: 1;
+}
+.correct-style{
+    color: green;
+}
+.incorrect-style{
+    color: red;
 }
