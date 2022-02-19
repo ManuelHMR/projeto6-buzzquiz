@@ -211,3 +211,6 @@ main {
 .incorrect-style{
     color: red;
 }
+.disabled{
+    pointer-events: none;
+}

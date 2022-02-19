@@ -91,12 +91,15 @@ function displayQuizzQuestions(){
         }
     }
 }
-
+let selectedIndex = 1;
 function verifyAnswer(e){
+    setTimeout(scrollQuestions, 2000)
+    selectedIndex++
     e.classList.add("selected")
     let answersArr = e.parentNode.querySelectorAll(".answer")
     for (let l = 0; l < answersArr.length; l++) {
         answersArr[l].classList.add("opacity")
+        answersArr[l].classList.add("disabled")
         if(answersArr[l].querySelector("p").innerHTML === 'true'){
             answersArr[l].querySelector("h3").classList.add("correct-style")
         } 
@@ -104,6 +107,11 @@ function verifyAnswer(e){
             answersArr[l].querySelector("h3").classList.add("incorrect-style")
         }
     }
+}
+
+function scrollQuestions(){
+    let questionBoxArr = document.querySelectorAll(".question-box");
+    questionBoxArr[selectedIndex].scrollIntoView();
 }
 
 function hideHomePage() {
