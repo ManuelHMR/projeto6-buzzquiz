@@ -2,6 +2,9 @@ const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 let savedApiData
 let id
 let main
+let selectedIndex = 1;
+let correctAnswersCount = 0;
+let resultF
 
 displayLoadPage()
 setTimeout(loadHomePage, 1500)
@@ -59,9 +62,9 @@ function displaySelectedQuizz() {
     displayQuizzQuestions()
 }
 
-function loadSelectedQuizz(e){
+function loadSelectedQuizz(element){
     displayLoadPage()
-    id = e.querySelector("p").innerHTML
+    id = element.querySelector("p").innerHTML
     setTimeout(displaySelectedQuizz, 1500)
 }
 
@@ -91,12 +94,15 @@ function displayQuizzQuestions(){
         }
     }
 }
-let selectedIndex = 1;
-function verifyAnswer(e){
+
+function verifyAnswer(element){
     setTimeout(scrollQuestions, 2000)
+    if(element.querySelector("p").innerHTML === 'true'){
+        correctAnswersCount++
+    }
     selectedIndex++
-    e.classList.add("selected")
-    let answersArr = e.parentNode.querySelectorAll(".answer")
+    element.classList.add("selected")
+    let answersArr = element.parentNode.querySelectorAll(".answer")
     for (let l = 0; l < answersArr.length; l++) {
         answersArr[l].classList.add("opacity")
         answersArr[l].classList.add("disabled")
@@ -107,11 +113,48 @@ function verifyAnswer(e){
             answersArr[l].querySelector("h3").classList.add("incorrect-style")
         }
     }
+    if(document.querySelectorAll(".selected").length === document.querySelectorAll(".question-box").length){
+        setTimeout (displayResult, 2000)
+        setTimeout (scrollResult, 2050)
+    }
+}
+
+function displayResult(){
+    calculateResult()
+    let reversedLevels = savedApiData[id].levels.reverse()
+    let level
+    let n
+    for(n = 0; n < savedApiData[id].levels.length; n++){
+        if (reversedLevels[n].minValue < resultF){
+            level = n;
+            break
+        } 
+    }
+    document.querySelector('main').innerHTML = document.querySelector('main').innerHTML + `
+        <div class="result">
+            <div class="result-header">
+                <h2> ${resultF}%  de acerto: ${reversedLevels[n].title}</h2>
+            </div>
+            <img src="${reversedLevels[n].image}"/>
+            <h3> ${reversedLevels[n].text}</h3>
+        </div>
+    `
+ 
+}
+
+function calculateResult(){
+    let numOfQuestions = document.querySelectorAll(".question-box").length;
+    resultF = Math.round((correctAnswersCount / numOfQuestions) * 100);
 }
 
 function scrollQuestions(){
     let questionBoxArr = document.querySelectorAll(".question-box");
     questionBoxArr[selectedIndex].scrollIntoView();
+}
+
+function scrollResult(){
+    let result = document.querySelector(".result");
+    result.scrollIntoView()
 }
 
 function hideHomePage() {

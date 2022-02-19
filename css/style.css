@@ -214,3 +214,33 @@ main {
 .disabled{
     pointer-events: none;
 }
+.result{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.result-header{
+    width: 340px;
+    height: 99px;
+    background-color: #EC362D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.result-header h2{
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 19px;
+    text-align: center;
+}
+.result img{
+    margin-top: 9px;
+    width: 340px;
+}
+.result h3{
+    font-size: 17px;
+    font-weight: 700;
+    max-width: 340px;
+    margin-top: 9px;
+}
