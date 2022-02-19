@@ -244,3 +244,21 @@ main {
     max-width: 340px;
     margin-top: 9px;
 }
+.result button{
+    margin-top: 34px;
+    color: #FFF5F4;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #EC362D;
+    width: 220px;
+    height: 44px;
+    border-radius: 15px;
+    border: none;
+}
+.result h5{
+    font-weight: 400;
+    color: #818181;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 66px;
+}

@@ -6,8 +6,12 @@ let selectedIndex = 1;
 let correctAnswersCount = 0;
 let resultF
 
-displayLoadPage()
-setTimeout(loadHomePage, 1500)
+siteStart()
+
+function siteStart(){
+    displayLoadPage()
+    setTimeout(loadHomePage, 1500)
+}
 
 function loadHomePage(){
     document.querySelector("main").innerHTML = `
@@ -137,9 +141,10 @@ function displayResult(){
             </div>
             <img src="${reversedLevels[n].image}"/>
             <h3> ${reversedLevels[n].text}</h3>
+            <button onclick="reloadQuizz()"> Reiniciar Quizz</button>
+            <h5 class="" onclick="siteStart()">Voltar para a home</h5>
         </div>
-    `
- 
+        `
 }
 
 function calculateResult(){
@@ -168,6 +173,11 @@ function displayLoadPage(){
     `
 }
 
+function reloadQuizz(){
+    hideHomePage()
+    displaySelectedQuizz()
+}
+
 function displayCreateQuizz() {
     document.querySelector('main').innerHTML = ``
     document.querySelector('main').innerHTML = `
@@ -176,3 +186,5 @@ function displayCreateQuizz() {
     console.log("Indo para criar quizz")
     renderingCreationGeneral()
 }
+
+
