@@ -42,7 +42,7 @@ function generalFormData(event) {
     value2 = imgQuizz.value
     value3 = amtQuestionQuizz.value
     value4 = amtLevelsQuizz.value
-    /* funfa mas depois tira pra funcionar
+    //validaçao
         if (!(value1.length <= 65 && value1.length >= 20)) {
             alert("O titulo tem que ter entre 20 e 65 caracteres");
         }
@@ -60,11 +60,7 @@ function generalFormData(event) {
             form.image = value2
             displayCreateQuestion()
         }
-    */
-        form.title = value1
-        form.image = value2
-    displayCreateQuestion()
-
+    
 }
 
 
@@ -187,7 +183,7 @@ function questionFormData(event) {
         isTrue: 0
     };
 
-    /*//validar dados essa funciona
+    //validar dados funciona
     form.questions.forEach((questions) => {
         let counter = 0;
         if (questions.title.length < 20 && counterQuestionItens.length === 0) {
@@ -229,8 +225,7 @@ function questionFormData(event) {
     if (form.questions.length !== 0) {
         displayCreateLevels();
     }
-    */
-    displayCreateLevels();
+    
 
 }
 
@@ -286,7 +281,7 @@ function levelsFormData(event) {
 
         form.levels.push(levelObjects);
     }
-    /*
+    //validaçao
     for (let j = 0; j < value4; j++) {
         if (form.levels[j].title.length < 10) {
             alert("O titulo do nível deve ter pelo menos 10 caracteres");
@@ -308,8 +303,7 @@ function levelsFormData(event) {
         }
         form.levels = [];
     }
-    */
-    displayCreateFinish();
+    
 }
 
 
@@ -324,18 +318,17 @@ function displayCreateFinish() {
     renderingCreationFinish()
 }
 
-function saveUserQuizz(quizzUser) {
-	axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizzUser)
-		.then(response => {
-			let userQuizzSerial = JSON.stringify(quizzUser)
+function saveUserQuizz(form) {
+	let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", form)
+		promise.then(response => {
+			let userQuizzSerial = JSON.stringify(form)
 			localStorage.setItem(response.data.id.toString(), userQuizzSerial)
 			let secretKey = "k" + response.data.id.toString()
 			localStorage.setItem(secretKey, response.data.key.toString()) 
-		})
-        .catch(erro => {
+		});
+        promise.catch(erro => {
             console.log(erro)
-        })
-        
+        });
 }
 
 function renderingCreationFinish() {
