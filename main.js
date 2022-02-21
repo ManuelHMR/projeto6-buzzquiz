@@ -1,16 +1,18 @@
 const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
-let savedApiData
-let id
-let main
+let savedApiData;
+let id;
+let main;
 let selectedIndex = 1;
 let correctAnswersCount = 0;
-let resultF
+let resultF;
 
 siteStart()
 
 function siteStart(){
     displayLoadPage()
     setTimeout(loadHomePage, 1500)
+    correctAnswersCount = 0;
+    resultF = 0;
 }
 
 function loadHomePage(){
@@ -19,13 +21,13 @@ function loadHomePage(){
             <div class="quizz-creation">
                 <div class="quizz-box creation-box">
                     <h2>Você não criou nenhum quizz ainda :(</h2>
-                    <button onclick="displayCreateQuizz()">Criar Quizz</button>
+                    <button onclick="displayCreateQuizz()" data-identifier="create-quizz">Criar Quizz</button>
                 </div>
             </div>
-            <div class="allQuizzes">
+            <div class="all-quizzes">
                 <span>Todos os Quizzes</span>
             </div>
-            <div class="quizz-display"></div>
+            <div class="quizz-display" data-identifier="general-quizzes"></div>
         </div>
     `
     getQuizz()
@@ -45,7 +47,7 @@ function displayQuizz(quizzRepesponse) {
         quizzDisplay.innerHTML =
             quizzDisplay.innerHTML +
             `
-      <div class="quizz-box" onclick="loadSelectedQuizz(this)">
+      <div class="quizz-box" onclick="loadSelectedQuizz(this)" data-identifier="quizz-card">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
         <p class="id hidden">${i}</p> 
@@ -77,9 +79,9 @@ function displayQuizzQuestions(){
     main = document.querySelector("main");
     for(let i = 0 ; i < questions.length; i++){
         main.innerHTML = main.innerHTML + `
-        <div class="question-box">
+        <div class="question-box" >
             <div style="background-color: ${questions[i].color};" class="question-box-header">
-                <h2>${questions[i].title}</h2>
+                <h2 data-identifier="question">${questions[i].title}</h2>
             </div>
         <div class="answer-box"></div>
         </div>
@@ -89,7 +91,7 @@ function displayQuizzQuestions(){
             let questionBoxArray = document.querySelectorAll(".question-box");
             let answerBox = questionBoxArray[i].querySelector(".answer-box")
             answerBox.innerHTML = answerBox.innerHTML + `
-            <div class="answer" onclick="verifyAnswer(this)">
+            <div class="answer" onclick="verifyAnswer(this)" data-identifier="answer">
                 <img src="${answerArray[j].image}"/>
                 <h3>${answerArray[j].text}</h3>
                 <p class="hidden">${answerArray[j].isCorrectAnswer}</p>
@@ -129,20 +131,24 @@ function displayResult(){
     let level
     let n
     for(n = 0; n < savedApiData[id].levels.length; n++){
-        if (reversedLevels[n].minValue < resultF){
+        if (reversedLevels[n].minValue <= resultF){
             level = n;
             break
         } 
     }
     document.querySelector('main').innerHTML = document.querySelector('main').innerHTML + `
         <div class="result">
-            <div class="result-header">
-                <h2> ${resultF}%  de acerto: ${reversedLevels[n].title}</h2>
+            <div class="result-box" data-identifier="quizz-result">
+                <div class="result-header">
+                    <h2> ${resultF}%  de acerto: ${reversedLevels[n].title}</h2>
+                </div>
+                <div class="result-body">    
+                    <img src="${reversedLevels[n].image}"/>
+                    <h3> ${reversedLevels[n].text}</h3>
+                </div>    
             </div>
-            <img src="${reversedLevels[n].image}"/>
-            <h3> ${reversedLevels[n].text}</h3>
-            <button onclick="reloadQuizz()"> Reiniciar Quizz</button>
-            <h5 class="" onclick="siteStart()">Voltar para a home</h5>
+            <button class="result" onclick="reloadQuizz()"> Reiniciar Quizz</button>
+            <h5 class="result" onclick="siteStart()">Voltar pra home</h5>
         </div>
         `
 }
@@ -176,6 +182,10 @@ function displayLoadPage(){
 function reloadQuizz(){
     hideHomePage()
     displaySelectedQuizz()
+    let header = document.querySelector("header");
+    header.scrollIntoView()
+    correctAnswersCount = 0;
+    resultF = 0;
 }
 
 function displayCreateQuizz() {

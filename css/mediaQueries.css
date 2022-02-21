@@ -2,6 +2,9 @@
   main{
     width: 1100px;
   }
+  .all-quizzes {
+    width: 1070px;
+  }
   .creation-box{
     width: 1100px;
   }
@@ -17,5 +20,34 @@
   }
   .selected-quizz-page img{
     height: 227px;
-}
+  }
+  .question-box{
+    width: 690px;
+  }
+  .question-box-header{
+    width: 690px;
+  }
+  .answer {
+    width: 330px;
+  }
+  .answer-box{
+    margin: 0px;
+  }
+  .answer img{
+    width: 330px;
+    height: 175px;
+  }
+  .result-header{
+    width: 727px;
+  }
+  .result-box img{
+    width: 364px;
+    height: 273px;
+  }
+  .result-body{
+    display: flex;
+  }
+  .result-body h3{
+    margin-left: 21px;
+  }
 }
