@@ -55,7 +55,7 @@ function generalFormData(event) {
         if (value4 < 2) {
             alert("A quantidade de niveis tem de ser ao menos 2");
         }
-        if ((regularExpressionUrl.test(value2)) && (value.length >= 20 && value.length <= 65) && (value3 >= 3) && (value4 >= 2)) {
+        if ((regularExpressionUrl.test(value2)) && (value1.length >= 20 && value1.length <= 65) && (value3 >= 3) && (value4 >= 2)) {
             form.title = value1
             form.image = value2
             displayCreateQuestion()
