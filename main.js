@@ -1,6 +1,6 @@
 const urlQuizz = 'https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes'
 let savedApiData;
-let id;
+let SelectedQuizzId;
 let main;
 let selectedIndex = 1;
 let correctAnswersCount = 0;
@@ -38,10 +38,13 @@ function getQuizz() {
     quizzPromise.then(displayQuizz)
 }
 
+function getSelectedQuizz(){
+    let getSelectedQuizzResponse = axios.get(urlQuizz + `/${SelectedQuizzId}`)
+    getSelectedQuizzResponse.then(displaySelectedQuizz)
+}
+
 function displayQuizz(quizzRepesponse) {
     let data = quizzRepesponse.data;
-    savedApiData = data;
-    console.log(data)
     for (let i = 0; i < quizzRepesponse.data.length; i++) {
         let quizzDisplay = document.querySelector('.quizz-display')
         quizzDisplay.innerHTML =
@@ -50,29 +53,30 @@ function displayQuizz(quizzRepesponse) {
       <div class="quizz-box" onclick="loadSelectedQuizz(this)" data-identifier="quizz-card">
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
-        <p class="id hidden">${i}</p> 
-        <div class="gradient"></div>
+        <p class="id hidden">${data[i].id}</p> 
       </div>
     `
     }
 }
 
-function displaySelectedQuizz() {
+function displaySelectedQuizz(apiResponse) {
+    console.log(apiResponse)
     hideHomePage()
-    document.querySelector("main").innerHTML = `<div class="selected-quizz-header"><img class="selected-quizz-img" src="${savedApiData[id].image}"/>
-    <h5>${savedApiData[id].title}</h5>
+    savedApiData = apiResponse.data;
+    document.querySelector("main").innerHTML = `<div class="selected-quizz-header"><img class="selected-quizz-img" src="${savedApiData.image}"/>
+    <h5>${savedApiData.title}</h5>
     </div>`
     displayQuizzQuestions()
 }
 
 function loadSelectedQuizz(element){
-    displayLoadPage();
-    id = element.querySelector("p").innerHTML;
-    setTimeout(displaySelectedQuizz, 1500);
+    displayLoadPage()
+    SelectedQuizzId = element.querySelector("p").innerHTML
+    setTimeout(getSelectedQuizz(), 1500)
 }
 
 function displayQuizzQuestions(){
-    let questions = savedApiData[id].questions;
+    let questions = savedApiData.questions;
     main = document.querySelector("main");
     for(let i = 0 ; i < questions.length; i++){
         main.innerHTML = main.innerHTML + `
@@ -124,10 +128,10 @@ function verifyAnswer(element){
 
 function displayResult(){
     calculateResult()
-    let reversedLevels = savedApiData[id].levels.reverse()
+    let reversedLevels = savedApiData.levels.reverse()
     let level
     let n
-    for(n = 0; n < savedApiData[id].levels.length; n++){
+    for(n = 0; n < savedApiData.levels.length; n++){
         if (reversedLevels[n].minValue <= resultF){
             level = n;
             break
@@ -178,7 +182,8 @@ function displayLoadPage(){
 
 function reloadQuizz(){
     hideHomePage()
-    displaySelectedQuizz()
+    displayLoadPage()
+    setTimeout(getSelectedQuizz(), 1500)
     let header = document.querySelector("header");
     header.scrollIntoView()
     correctAnswersCount = 0;
