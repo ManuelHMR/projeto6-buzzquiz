@@ -27,7 +27,7 @@ function loadHomePage(){
             <div class="all-quizzes">
                 <span>Todos os Quizzes</span>
             </div>
-            <div class="quizz-display" data-identifier="general-quizzes"></div>
+            <div class="quizz-display"></div>
         </div>
     `
     getQuizz()
@@ -51,13 +51,10 @@ function displayQuizz(quizzRepesponse) {
         <img src="${data[i].image}"/>
         <h5>${data[i].title}</h5>
         <p class="id hidden">${i}</p> 
+        <div class="gradient"></div>
       </div>
     `
     }
-    // for (let j = 0; j < quizzRepesponse.data.length; j++) {
-    //      let quizzImg = document.querySelector("quizz-box");
-    //     quizzImg.setAttribute("background-image:", "linear-gradient(to bottom, rgba(255, 0, 0, 0), rgba(0, 0, 0, 1)), url(`${data[j].image}`)");
-    //  }
 }
 
 function displaySelectedQuizz() {
@@ -69,9 +66,9 @@ function displaySelectedQuizz() {
 }
 
 function loadSelectedQuizz(element){
-    displayLoadPage()
-    id = element.querySelector("p").innerHTML
-    setTimeout(displaySelectedQuizz, 1500)
+    displayLoadPage();
+    id = element.querySelector("p").innerHTML;
+    setTimeout(displaySelectedQuizz, 1500);
 }
 
 function displayQuizzQuestions(){
