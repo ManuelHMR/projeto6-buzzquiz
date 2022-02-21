@@ -53,6 +53,8 @@ function displayQuizz(quizzRepesponse) {
         <p class="id hidden">${i}</p> 
       </div>
     `
+
+    //quizzShadow.style.backgroundImage = `linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(${data[i].image})`;
     }
     // for (let j = 0; j < quizzRepesponse.data.length; j++) {
     //      let quizzImg = document.querySelector("quizz-box");
